@@ -1,0 +1,159 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ppp.css">
+
+</head>
+<body>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <!-- Search Bar (Right Side) -->
+                <div class="search-box">
+                    <input type="text" placeholder="جستجو مهارت ...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+    
+                <!-- Logo & Title (Center) -->
+                <div class="logo-title">
+                    <span class="logo"><img class="img" src="@bghazfbot.png" alt="maharat jo"></span>
+                    <h2>maharat jo</h2>
+                </div>
+    
+                <!-- User Section (Left Side) -->
+                <div class="user-section">
+                    <a href="#" class="avatar">+</a> <!-- لینک دار کردن دایره + -->
+                    <div class="user-text">
+                      <a href="login.html"><button class="login">ورود</button></a> 
+                      <a href="join.html"><button class="login">ثبت نام</button></a>  
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <!-- Navigation Bar (Lowered & Styled as Buttons) -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#">خانه</a></li>
+                <li><a href="#">تماس با ما</a></li>
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">بلاگ</a></li>
+            </ul>
+        </nav>
+<div id="skillBoxes">
+    <div class="skill-box">
+        <div class="skill-item">
+            <span class="skill-label">مهارت:</span>
+            <span class="skill-value">برنامه‌نویسی وب</span>
+        </div>
+        <div class="skill-item">
+            <span class="skill-label">موقعیت:</span>
+            <span class="skill-value">تهران</span>
+        </div>
+    </div>
+    <div class="skill-box">
+        <div class="skill-item">
+            <span class="skill-label">مهارت:</span>
+            <span class="skill-value">طراحی گرافیک</span>
+        </div>
+        <div class="skill-item">
+            <span class="skill-label">موقعیت:</span>
+            <span class="skill-value">اصفهان</span>
+        </div>
+    </div>
+</div>
+            <!-- لودرها -->
+            <div class="loader-container">
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+                <div class="loader"><div class="loader_cube loader_cube--color"></div><div class="loader_cube loader_cube--glowing"></div></div>
+            </div>
+
+        
+<!-- دکمه و توضیحات -->
+
+          
+    <footer class="footer">
+        <nav class="nav-container">
+
+<a href="index.html" class="nav-item">
+                <i class="fas fa-home nav-icon"><img width="29" height="29" src="https://img.icons8.com/windows/32/home.png" alt="home"></i>
+                <span class="nav-text">خانه</span>
+            </a>
+            
+            <a href="#" class="nav-item">
+                <i class="fas fa-box nav-icon"><img width="29" height="29" src="https://img.icons8.com/material-rounded/24/search.png" alt="search"></i>
+                <span class="nav-text">جستجو</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-box nav-icon"><img width="29" height="29" src="https://img.icons8.com/fluency-systems-regular/50/maintenance--v1.png" alt="maintenance--v1"></i>
+                <span class="nav-text">ثبت مهارت</span>
+            </a>
+            
+            
+            <a href="login.html" class="nav-item">
+                <i class="fas fa-user nav-icon"><img width="29" height="29" src="https://img.icons8.com/fluency-systems-regular/50/login-rounded-right.png" alt="login-rounded-right"></i>
+                <span class="nav-text">ورود/ثبت‌نام</span>
+            </a>
+        </nav>
+    </footer>
+    
+    
+    
+    <script>
+   // تابع برای دریافت و نمایش مهارت‌ها
+function loadSkills() {
+    fetch('get_skills.php')
+    .then(response => response.json())
+    .then(data => {
+        const skillBoxes = document.getElementById('skillBoxes');
+        skillBoxes.innerHTML = ''; // پاک کردن محتوای قبلی
+        
+        data.skills.forEach(skill => {
+            // ایجاد یک باکس جدید برای هر مهارت
+            const box = document.createElement('div');
+            box.className = 'skill-box';
+            
+            // ساختار داخلی باکس
+            box.innerHTML = `
+                <div class="skill-item">
+                    <span class="skill-label">مهارت:</span>
+                    <span class="skill-value">${skill.skill || 'نامشخص'}</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-label">موقعیت:</span>
+                    <span class="skill-value">${skill.location || 'نامشخص'}</span>
+                </div>
+
+            `;
+            
+            // اضافه کردن باکس به صفحه
+            skillBoxes.appendChild(box);
+        });
+    })
+    .catch(error => {
+        console.error('خطا در دریافت مهارت‌ها:', error);
+        // نمایش پیام خطا به کاربر
+        const skillBoxes = document.getElementById('skillBoxes');
+        skillBoxes.innerHTML = `
+            <div class="error-message">
+                خطا در بارگذاری مهارت‌ها. لطفاً دوباره تلاش کنید.
+            </div>
+        `;
+    });
+}
+
+// بارگذاری اولیه مهارت‌ها
+document.addEventListener('DOMContentLoaded', loadSkills);
+</script>
+
+
+</body></html>
